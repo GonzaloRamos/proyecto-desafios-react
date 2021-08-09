@@ -1,3 +1,11 @@
+.containerRow {
+  margin-top: 20vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .App {
   text-align: center;
 }
