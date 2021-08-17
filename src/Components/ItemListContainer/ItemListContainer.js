@@ -1,5 +1,8 @@
 import React from "react";
 import "./ItemListContainer.css";
+
+import ItemCount from "../itemCount/ItemCount";
+
 const ItemListContainer = ({ imagen, altImagen, nombre, detalle }) => {
   return (
     <div className="card">
@@ -11,6 +14,8 @@ const ItemListContainer = ({ imagen, altImagen, nombre, detalle }) => {
         </div>
         <div className="detalle">
           <p>{detalle}</p>
+
+          <ItemCount stock={5} initial={1} />
         </div>
       </div>
     </div>
