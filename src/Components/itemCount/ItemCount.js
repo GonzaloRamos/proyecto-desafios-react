@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
+
 import "./ItemCount.css";
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
 
   const increment = () => {
@@ -31,6 +32,10 @@ const ItemCount = ({ stock, initial }) => {
       </Button>
       <Button secondary onClick={decrement}>
         -
+      </Button>
+
+      <Button icon onClick={onAdd}>
+        <Icon name="cart" />
       </Button>
     </div>
   );

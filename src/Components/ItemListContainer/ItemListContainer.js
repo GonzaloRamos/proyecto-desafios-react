@@ -15,7 +15,13 @@ const ItemListContainer = ({ imagen, altImagen, nombre, detalle }) => {
         <div className="detalle">
           <p>{detalle}</p>
 
-          <ItemCount stock={5} initial={1} />
+          <ItemCount
+            stock={5}
+            initial={1}
+            onAdd={() => {
+              console.log("Console log de onAdd");
+            }}
+          />
         </div>
       </div>
     </div>
