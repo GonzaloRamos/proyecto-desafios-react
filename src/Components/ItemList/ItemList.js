@@ -6,8 +6,8 @@ const ItemList = ({ dataProductos }) => {
   return (
     <div className="containerRow">
       <div>
-        {dataProductos.map((dataProductos) => {
-          return <Item data={dataProductos} key={dataProductos.id} />;
+        {dataProductos.map((producto) => {
+          return <Item data={producto} key={producto.id} />;
         })}
       </div>
     </div>
