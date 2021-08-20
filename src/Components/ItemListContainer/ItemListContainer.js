@@ -1,29 +1,26 @@
 import React from "react";
 import "./ItemListContainer.css";
+import { useEffect, useState } from "react";
 
-import ItemCount from "../itemCount/ItemCount";
+//Componentes
+import ItemList from "../ItemList/ItemList";
 
-const ItemListContainer = ({ imagen, altImagen, nombre, detalle }) => {
+const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(data);
+      });
+  }, []);
+
   return (
-    <div className="card">
-      <img src={imagen} alt={altImagen} />
-
-      <div className="containerCard">
-        <div>
-          <h2 className="tituloCard">{nombre}</h2>
-        </div>
-        <div className="detalle">
-          <p>{detalle}</p>
-
-          <ItemCount
-            stock={5}
-            initial={1}
-            onAdd={() => {
-              console.log("Console log de onAdd");
-            }}
-          />
-        </div>
-      </div>
+    <div className="containerRow">
+      {" "}
+      <ItemList dataProductos={products} />
     </div>
   );
 };
