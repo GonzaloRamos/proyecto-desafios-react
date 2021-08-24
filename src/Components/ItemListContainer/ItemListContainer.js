@@ -1,26 +1,33 @@
 import React from "react";
-import "./ItemListContainer.css";
 import { useEffect, useState } from "react";
 
 //Componentes
 import ItemList from "../ItemList/ItemList";
+import LoaderClothes from "../Loader/LoaderClothes";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setProducts(data);
+        const dataFilter = data.filter(
+          (e) =>
+            e.category === "men's clothing" ||
+            e.category === "jewelery" ||
+            e.category === "women's clothing"
+        );
+        setProducts(dataFilter);
+        setLoad(false);
       });
   }, []);
 
   return (
     <div className="containerRow">
       {" "}
-      <ItemList dataProductos={products} />
+      {load ? <LoaderClothes /> : <ItemList dataItems={products} />}
     </div>
   );
 };

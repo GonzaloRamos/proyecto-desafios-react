@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button, Icon } from "semantic-ui-react";
 
-import "./ItemCount.css";
-
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
 

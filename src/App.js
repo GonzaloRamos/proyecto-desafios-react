@@ -1,20 +1,28 @@
 import React from "react";
+import { Fragment } from "react";
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+//Views
+import Home from "./Views/Home";
+import DetailItem from "./Views/DetailItem";
+import Category from "./Views/Category";
 
 //Componentes
-import Header from "./Components/Header/Header";
-import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
+
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <div>
-          <Header title="Bienvenidxs a la tienda (que todavia no se el nombre)" />
-        </div>
-
-        <ItemListContainer />
-      </div>
+      <Fragment>
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/detail/:id" component={DetailItem} />
+            <Route path="/category/:category" component={Category} />
+          </Switch>
+        </Router>
+      </Fragment>
     );
   }
 }
