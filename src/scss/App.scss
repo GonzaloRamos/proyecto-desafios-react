@@ -1,7 +1,11 @@
-@import "../Components/Header/_Header.scss";
+@import "../Components/Header/Header";
 
-@import "../Components/Item/Item.scss";
+@import "../Components/Item/Item";
 
-@import "../Components/ItemListContainer/ItemListContainer.scss";
+@import "../Components/ItemListContainer/ItemListContainer";
 
-@import "../Components/NavBar/NavBar.scss";
+@import "../Components/NavBar/NavBar";
+
+// * {
+//   border: 1px solid red;
+// }

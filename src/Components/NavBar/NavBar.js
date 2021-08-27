@@ -20,7 +20,7 @@ export default class NavBar extends Component {
           </Menu.Item>
         </Link>
 
-        <Link to="/category">
+        <Link to="/category/men's clothing">
           <Menu.Item
             name="Ropa para hombres"
             active={activeItem === "Remeras"}
@@ -29,22 +29,24 @@ export default class NavBar extends Component {
             Ropa para hombres
           </Menu.Item>
         </Link>
-
-        <Menu.Item
-          name="Ropa para mujeres"
-          active={activeItem === "Medias"}
-          onClick={this.handleItemClick}
-        >
-          Ropa para mujeres
-        </Menu.Item>
-
-        <Menu.Item
-          name="Joyerias"
-          active={activeItem === "Jeans"}
-          onClick={this.handleItemClick}
-        >
-          Joyerias
-        </Menu.Item>
+        <Link to="/category/women's clothing">
+          <Menu.Item
+            name="Ropa para mujeres"
+            active={activeItem === "Medias"}
+            onClick={this.handleItemClick}
+          >
+            Ropa para mujeres
+          </Menu.Item>
+        </Link>
+        <Link to="/category/jewelery">
+          <Menu.Item
+            name="Joyerias"
+            active={activeItem === "Jeans"}
+            onClick={this.handleItemClick}
+          >
+            Joyerias
+          </Menu.Item>
+        </Link>
 
         <Menu.Item>
           <CartWidget />

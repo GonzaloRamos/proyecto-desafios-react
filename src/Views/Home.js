@@ -7,9 +7,8 @@ const Home = () => {
   return (
     <Fragment>
       <Header title="Bienvenidxs a la tienda (que todavia no se el nombre)" />
-      <section>
-        <ItemListContainer />
-      </section>
+
+      <ItemListContainer />
     </Fragment>
   );
 };

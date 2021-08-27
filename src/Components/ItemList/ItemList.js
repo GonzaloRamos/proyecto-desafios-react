@@ -1,21 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import Item from "../Item/Item";
-import { Link } from "react-router-dom";
 
 const ItemList = ({ dataItems }) => {
   return (
-    <div className="containerRow">
+    <Fragment>
       {dataItems.map((item) => {
-        return (
-          <div key={item.id}>
-            <Link to={`/detail/${item.id}`}>
-              <Item data={item} />
-            </Link>
-          </div>
-        );
+        return <Item data={item} />;
       })}
-    </div>
+    </Fragment>
   );
 };
 
