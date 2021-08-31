@@ -16,7 +16,7 @@ export default class NavBar extends Component {
         <Link to="/">
           <Menu.Item>
             {" "}
-            <h1 className="titleNavBar">Tienda de ropa</h1>
+            <h1 className="titleNavBar">Clothes Market</h1>
           </Menu.Item>
         </Link>
 
@@ -26,7 +26,7 @@ export default class NavBar extends Component {
             active={activeItem === "Remeras"}
             onClick={this.handleItemClick}
           >
-            Ropa para hombres
+            Men's Clothes
           </Menu.Item>
         </Link>
         <Link to="/category/women's clothing">
@@ -35,7 +35,7 @@ export default class NavBar extends Component {
             active={activeItem === "Medias"}
             onClick={this.handleItemClick}
           >
-            Ropa para mujeres
+            Women's Clothes
           </Menu.Item>
         </Link>
         <Link to="/category/jewelery">
@@ -44,12 +44,14 @@ export default class NavBar extends Component {
             active={activeItem === "Jeans"}
             onClick={this.handleItemClick}
           >
-            Joyerias
+            Jewelery
           </Menu.Item>
         </Link>
 
         <Menu.Item>
-          <CartWidget />
+          <Link to="cart">
+            <CartWidget />
+          </Link>
         </Menu.Item>
       </Menu>
     );

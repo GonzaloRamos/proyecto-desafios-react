@@ -1,29 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Button, Icon } from "semantic-ui-react";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
+  const [stockProduct, setStockProduct] = useState(stock);
 
   const increment = () => {
     setCount(count + 1);
-    if (stock <= count) {
+    setStockProduct(stockProduct - 1);
+
+    if (stockProduct <= 0) {
       setCount(count);
-      alert("¡No hay mas stock!");
+      setStockProduct(stockProduct);
+      alert("¡No more stock available!");
     }
   };
 
   const decrement = () => {
     setCount(count - 1);
+    setStockProduct(stockProduct + 1);
 
-    if (count <= 1) {
+    if (count <= 0) {
       setCount(count);
+      setStockProduct(stockProduct);
+      alert("¡You got nothing in the cart!");
     }
   };
 
+  const add = () => {
+    onAdd(count);
+    console.log(`Agregaste ${count} al carrito`);
+  };
+
   return (
-    <div>
-      <h4>Cantidad que vas a comprar : {count} </h4>
-      <h5>Stock disponible: {stock}</h5>
+    <Fragment>
+      <h4>Item's you will buy : {count} </h4>
+      <h5>Available stock: {stockProduct}</h5>
 
       <Button primary onClick={increment}>
         +
@@ -32,10 +44,10 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         -
       </Button>
 
-      <Button icon onClick={onAdd}>
-        <Icon name="cart" />
+      <Button icon onClick={add}>
+        <Icon name="add to cart" />
       </Button>
-    </div>
+    </Fragment>
   );
 };
 

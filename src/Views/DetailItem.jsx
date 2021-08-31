@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import ItemDetailContainer from "../Components/ItemDetailCointainer/ItemDetailContainer";
 import { useParams } from "react-router";
 
@@ -11,10 +11,10 @@ const DetailItem = () => {
   console.log(id)
 
   return (
-    <div>
+    <Fragment>
       <NavBar/>
       <ItemDetailContainer itemID={id}></ItemDetailContainer>
-    </div>
+    </Fragment>
   );
 };
 

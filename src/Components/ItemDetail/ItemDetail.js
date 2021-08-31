@@ -1,31 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({ item }) => {
+  let stock = 5;
+
+  const [product, setProduct] = useState(0);
+
+  const onAdd = (i) => {
+    setProduct(i);
+  };
+
   return (
-    <div>
+    <section className="singleProduct">
       {" "}
-      <div className="card">
+      <div className="singleProduct__left">
+        {" "}
         <img src={item.image} alt="sarasa" />
-
-        <div className="containerCard">
-          <div>
-            <h2 className="tituloCard">{item.title}</h2>
-          </div>
-          <div className="detalle">
-            <p>{item.description}</p>
-
-            <ItemCount
-              stock={5}
-              initial={1}
-              onAdd={() => {
-                console.log("Console log de onAdd");
-              }}
-            />
-          </div>
+      </div>
+      <div className="singleProduct__right">
+        <div className="singleProduct__right__title">
+          <h2>{item.title}</h2>
+        </div>
+        <div className="singleProduct__right__description">
+          {" "}
+          <p>{item.description}</p>{" "}
+        </div>
+        <div className="singleProduct__right__itemCount">
+          {product > 0 ? (
+            <Link to="/cart">
+              <button>Buy now</button>
+            </Link>
+          ) : (
+            <ItemCount stock={stock} initial={0} onAdd={onAdd} />
+          )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

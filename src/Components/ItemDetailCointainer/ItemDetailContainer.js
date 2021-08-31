@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import LoaderClothes from "../Loader/LoaderClothes";
 
 const ItemDetailContainer = ({ itemID }) => {
   const [item, setItem] = useState({});
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${itemID}`)
@@ -10,14 +12,11 @@ const ItemDetailContainer = ({ itemID }) => {
       .then((data) => {
         console.log(data);
         setItem(data);
+        setLoad(false);
       });
   }, [itemID]);
 
-  return (
-    <div>
-      <ItemDetail item={item} />
-    </div>
-  );
+  return load ? <LoaderClothes /> : <ItemDetail item={item} />;
 };
 
 export default ItemDetailContainer;

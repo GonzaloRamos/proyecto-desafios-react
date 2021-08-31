@@ -1,0 +1,47 @@
+.singleProduct {
+  height: auto;
+  width: 100%;
+  padding: 0;
+  margin: 1em;
+  background: #fff;
+
+  @include FlexCenter(column, nowrap, 50px);
+
+  &__left {
+    padding: 1em;
+    flex: 0 0 360px;
+    height: 50%;
+
+    img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__right {
+    flex: 0 1 360px;
+    height: 50%;
+    padding: 1em;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    gap: 2em;
+    text-align: start;
+
+    // &__title {
+    // padding: 1em;
+    // }
+
+    &__description {
+      text-transform: capitalize;
+      text-indent: 2%;
+      p {
+        line-height: 1.7em;
+      }
+    }
+
+    &__itemCount {
+      padding: 1em;
+    }
+  }
+}

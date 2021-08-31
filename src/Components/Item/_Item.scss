@@ -1,17 +1,13 @@
 .card {
+  background: #fff;
   display: flex;
-  flex: 1 0 300px;
+  flex: 0 1 300px;
   flex-direction: column;
-  background: white;
-  max-width: 450px;
-  color: black;
-  border-radius: 5px;
-  box-shadow: 4px 0px 6px 0px #15648c52;
-  font-size: 1rem;
+  border-radius: 5%;
+  box-shadow: 4px 0px 6px 0px $bg-color-secondary;
   overflow: hidden;
-  height: 100%;
-  width: 100%;
-  margin: 15px;
+  margin: 1em;
+  padding: 1em;
 
   &__title h1 {
     font-size: 1.75rem;
