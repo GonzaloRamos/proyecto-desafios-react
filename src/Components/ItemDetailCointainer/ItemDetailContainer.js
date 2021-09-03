@@ -10,7 +10,6 @@ const ItemDetailContainer = ({ itemID }) => {
     fetch(`https://fakestoreapi.com/products/${itemID}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setItem(data);
         setLoad(false);
       });

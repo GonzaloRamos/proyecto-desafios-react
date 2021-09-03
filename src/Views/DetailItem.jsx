@@ -8,7 +8,7 @@ import NavBar from "../Components/NavBar/NavBar";
 const DetailItem = () => {
 
   let {id} = useParams();
-  console.log(id)
+
 
   return (
     <Fragment>

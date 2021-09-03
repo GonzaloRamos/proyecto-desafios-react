@@ -1,41 +1,36 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Button, Icon } from "semantic-ui-react";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stockItem, initial = 0, onAdd }) => {
   const [count, setCount] = useState(initial);
-  const [stockProduct, setStockProduct] = useState(stock);
+  const [stock, setStock] = useState(stockItem);
 
   const increment = () => {
     setCount(count + 1);
-    setStockProduct(stockProduct - 1);
+    setStock(stock - 1);
 
-    if (stockProduct <= 0) {
+    if (stock <= 0) {
       setCount(count);
-      setStockProduct(stockProduct);
+      setStock(stock);
       alert("¡No more stock available!");
     }
   };
 
   const decrement = () => {
     setCount(count - 1);
-    setStockProduct(stockProduct + 1);
+    setStock(stock + 1);
 
     if (count <= 0) {
       setCount(count);
-      setStockProduct(stockProduct);
+      setStock(stock);
       alert("¡You got nothing in the cart!");
     }
-  };
-
-  const add = () => {
-    onAdd(count);
-    console.log(`Agregaste ${count} al carrito`);
   };
 
   return (
     <Fragment>
       <h4>Item's you will buy : {count} </h4>
-      <h5>Available stock: {stockProduct}</h5>
+      <h5>Available stock: {stock}</h5>
 
       <Button primary onClick={increment}>
         +
@@ -44,8 +39,8 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         -
       </Button>
 
-      <Button icon onClick={add}>
-        <Icon name="add to cart" />
+      <Button icon>
+        <Icon name="add to cart" onClick={() => onAdd(count)} />
       </Button>
     </Fragment>
   );

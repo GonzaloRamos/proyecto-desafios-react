@@ -2,7 +2,7 @@ import React from "react";
 
 import NavBar from "../NavBar/NavBar";
 
-import NavBarTwo from "../NavBar/NavBarTwo";
+// import NavBarTwo from "../NavBar/NavBarTwo";
 
 const Header = ({ title }) => {
   return (
