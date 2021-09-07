@@ -47,12 +47,11 @@ export default class NavBar extends Component {
             Jewelery
           </Menu.Item>
         </Link>
-
-        <Menu.Item>
-          <Link to="cart">
+        <Link to="cart">
+          <Menu.Item>
             <CartWidget />
-          </Link>
-        </Menu.Item>
+          </Menu.Item>
+        </Link>
       </Menu>
     );
   }

@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Icon } from "semantic-ui-react";
 import "./CartWidget.css";
 import { Link } from "react-router-dom";
 
-// import { CartContext } from "react/cjs/react.development";
+import { CartContext } from "../CartContext/CartContext";
 
 const CartWidget = () => {
-  // const { cart } = useContext(CartContext);
+  const { totalItems } = useContext(CartContext);
 
-  // const totalItems = cart.length;
   return (
     <div>
       <Link to="/cart">
         <Icon name="shopping cart" className="iconMenu" />
-        {/* <span>{totalItems}</span> */}
+        {<span>{totalItems}</span>}
       </Link>
     </div>
   );

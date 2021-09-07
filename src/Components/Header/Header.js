@@ -6,10 +6,9 @@ import NavBar from "../NavBar/NavBar";
 
 const Header = ({ title }) => {
   return (
-    <header className="Header">
+    <header>
       <NavBar></NavBar>
       {/* <NavBarTwo></NavBarTwo> */}
-      <h1>{title}</h1>
     </header>
   );
 };

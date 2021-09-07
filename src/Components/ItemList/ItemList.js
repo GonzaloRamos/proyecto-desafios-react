@@ -6,7 +6,7 @@ const ItemList = ({ dataItems }) => {
   return (
     <Fragment>
       {dataItems.map((item) => {
-        return <Item data={item} />;
+        return <Item data={item} key={item.id} />;
       })}
     </Fragment>
   );

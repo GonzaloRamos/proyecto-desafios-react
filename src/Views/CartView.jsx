@@ -1,15 +1,17 @@
-import React  from 'react'
+import React, { Fragment } from "react";
 
-import Cart from '../Components/Cart/Cart'
+//Componentes
+import NavBar from "../Components/NavBar/NavBar";
+import Cart from "../Components/Cart/Cart";
 
 const CartView = () => {
+  return (
+    <Fragment>
+      <NavBar></NavBar>
 
+      <Cart></Cart>
+    </Fragment>
+  );
+};
 
-    return (
-        <div>
-            <Cart></Cart>
-        </div>
-    )
-}
-
-export default CartView
+export default CartView;

@@ -1,0 +1,18 @@
+.cartContainer {
+  @include FlexCenter(row, nowrap, 0px);
+  height: 100vh;
+  width: 80%;
+  background: white;
+  margin: 40px auto;
+
+  ul {
+    list-style-type: none;
+    background: pink;
+    padding: 50px;
+
+    li {
+      background-color: red;
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,21 +1,38 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
-import { CartContext } from "../CartContext/CartContext";
+import { useCartContext } from "../CartContext/CartContext";
 
 const ItemDetail = ({ item }) => {
-  const [value] = useState(0);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cart, isInCart } = useCartContext();
+
+  const [stock, setStock] = useState(() => {
+    let itemStock = () => {
+      if (isInCart(item.id)) {
+        const newStock = cart.filter(
+          (cartElement) => cartElement.id === item.id
+        );
+
+        return newStock[0].stock;
+      } else {
+        return Math.floor(Math.random() * 10);
+      }
+    };
+    return itemStock();
+  });
+
+  item.stock = stock;
+  const [value, setValue] = useState(0);
 
   //Actualiza el CartContext
-
   const onAdd = (count) => {
     if (count !== 0) {
       addToCart(item, count);
-      alert("click");
+      setValue(1);
+    } else {
+      alert("you have to add something");
     }
   };
-
   return (
     <section className="singleProduct">
       {" "}
@@ -37,7 +54,7 @@ const ItemDetail = ({ item }) => {
               <button>Buy now</button>
             </Link>
           ) : (
-            <ItemCount stockItem={5} onAdd={onAdd} />
+            <ItemCount stockItem={stock} onAdd={onAdd} setStock={setStock} />
           )}
         </div>
       </div>

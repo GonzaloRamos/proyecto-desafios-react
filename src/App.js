@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment } from "react";
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -16,7 +15,7 @@ import { CartProvider } from "./Components/CartContext/CartContext";
 class App extends React.Component {
   render() {
     return (
-      <Fragment>
+      <div className="root">
         <CartProvider>
           <Router>
             <Switch>
@@ -27,7 +26,7 @@ class App extends React.Component {
             </Switch>
           </Router>
         </CartProvider>
-      </Fragment>
+      </div>
     );
   }
 }

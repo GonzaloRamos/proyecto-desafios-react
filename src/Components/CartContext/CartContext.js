@@ -1,58 +1,71 @@
-import React, { createContext, useState } from "react";
+import React, { useContext, createContext } from "react";
+import { useEffect } from "react/cjs/react.development";
+import { useLocalStorage } from "../CustomHooks/useLocalStorage/useLocalStorage";
 
 export const CartContext = createContext();
+export const useCartContext = () => useContext(CartContext);
 
-export const CartProvider = (props) => {
-  const [cart, setCart] = useState([]);
-  const [cartToRender, setCartToRender] = useState([]);
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useLocalStorage("cart", []);
 
-  const isInCart = (id) => cart.some((item) => item.id === id);
+  const isInCart = (id) => {
+    return cart.some((e) => e.id === id);
+  };
 
-  const addToCart = (item, quantity) => {
+  const addToCart = (item, quantity, stock) => {
     if (isInCart(item.id)) {
-      const newCart = () => {
-        for (let index = 0; index < quantity; index++) {
-          setCart((prev) => [...prev, { item }]);
-        }
-      };
+      const newCart = cart.map((cartElement) => {
+        if (cartElement.id === item.id) {
+          return {
+            ...cartElement,
+            quantity: cartElement.quantity + quantity,
+            stock: cartElement.stock - quantity,
+          };
+        } else return cartElement;
+      });
+      setCart(newCart);
     } else {
-      return (
-        setCart((prev) => [...prev, { item }]) &&
-        setCartToRender([new Set(cart)])
-      );
+      setCart((prev) => [...prev, { ...item, quantity }]);
     }
-
-    setCartToRender([new Set(cart)]);
-    console.log(cart);
   };
 
   const removeItem = (itemId) => {
-    setCart(cart.filter((element) => element.item.id === itemId));
-    setCartToRender(
-      cartToRender.filter((element) => element.item.id === itemId)
-    );
+    setCart(cart.filter((cartElement) => cartElement.id !== itemId));
   };
 
-  const clear = () => {
-    setCart([]);
+  const clear = () => setCart([]);
+
+  let totalItems = cart.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0);
+
+  const totalPrice = () => {
+    let number = cart
+      .reduce((acc, item) => {
+        return acc + item.price * item.quantity;
+      }, 0)
+      .toFixed(2);
+
+    return number;
   };
 
-  // comparto para ver cuantas veces se repite entre los dos arrays
-  const unitsPerItem = () => {
-    const units = cartToRender.forEach((itemCart) => {
-      cart.reduce((total, itemProduct) => {
-        return itemProduct === itemCart.id ? (total += 1) : total;
-      }, 0);
-    });
-    return units;
-  };
-
-  const totalPrice = () =>
-    cart.reduce((totalPrice, itemCart) => totalPrice + itemCart.price, 0);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
-      {props.children}
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeItem,
+        clear,
+        isInCart,
+        totalItems,
+        totalPrice,
+      }}
+    >
+      {children}
     </CartContext.Provider>
   );
 };
