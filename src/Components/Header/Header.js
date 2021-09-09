@@ -2,13 +2,10 @@ import React from "react";
 
 import NavBar from "../NavBar/NavBar";
 
-// import NavBarTwo from "../NavBar/NavBarTwo";
-
-const Header = ({ title }) => {
+const Header = () => {
   return (
     <header>
       <NavBar></NavBar>
-      {/* <NavBarTwo></NavBarTwo> */}
     </header>
   );
 };

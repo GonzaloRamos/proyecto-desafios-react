@@ -1,20 +1,22 @@
-import React, { useContext } from "react";
-import { Icon } from "semantic-ui-react";
+import React, { useContext, Fragment } from "react";
 import "./CartWidget.css";
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 import { CartContext } from "../CartContext/CartContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const CartWidget = () => {
   const { totalItems } = useContext(CartContext);
 
   return (
-    <div>
-      <Link to="/cart">
-        <Icon name="shopping cart" className="iconMenu" />
-        {<span>{totalItems}</span>}
-      </Link>
-    </div>
+    <Fragment>
+      {" "}
+      <NavLink to="/cart" className="menu-nav__link">
+        {" "}
+        <FontAwesomeIcon icon={faShoppingCart} />
+        <span>{totalItems}</span>
+      </NavLink>{" "}
+    </Fragment>
   );
 };
 

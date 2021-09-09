@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
-import { Button, Icon } from "semantic-ui-react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const ItemCount = ({ stockItem, setStock, initial = 0, onAdd }) => {
   const [count, setCount] = useState(initial);
@@ -31,16 +33,21 @@ const ItemCount = ({ stockItem, setStock, initial = 0, onAdd }) => {
       <h4>Item's you will buy : {count} </h4>
       <h5>Available stock: {stockItem}</h5>
 
-      <Button primary onClick={increment}>
+      <button primary onClick={increment}>
         +
-      </Button>
-      <Button secondary onClick={decrement}>
+      </button>
+      <button secondary onClick={decrement}>
         -
-      </Button>
+      </button>
 
-      <Button icon>
-        <Icon name="add to cart" onClick={() => onAdd(count)} />
-      </Button>
+      <button>
+        <FontAwesomeIcon
+          icon={faShoppingCart}
+          onClick={() => {
+            onAdd(count);
+          }}
+        />{" "}
+      </button>
     </Fragment>
   );
 };

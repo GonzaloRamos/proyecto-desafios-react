@@ -14,6 +14,8 @@
 
 @import "../Components/Cart/Cart";
 
+@import "responsive";
+
 .root {
   background: linear-gradient(
       to right,
@@ -28,4 +30,8 @@
   height: 100%;
   width: 100%;
   padding: 0;
+}
+
+a {
+  color: white;
 }

@@ -42,12 +42,11 @@
     overflow: hidden;
     margin: 0;
     background-image: linear-gradient(
-      120deg,
+      47deg,
       $bg-color-primary,
       $bg-color-secondary
     );
     list-style: none;
-
     padding-right: 1rem;
     transform: translateY(-100%);
     @include transition-ease;
@@ -73,12 +72,31 @@
       display: inline-block;
       font-size: 2rem;
       text-transform: uppercase;
+      text-decoration: none;
       padding: 2rem 0;
       font-weight: 300;
       @include transition-ease;
 
       &:hover {
         color: orange;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 2rem;
+        background: $bg-color-secondary;
+        width: 0;
+        height: 2px;
+        @include transition-ease;
+      }
+      &:hover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        background: $bg-color-secondary;
+        width: 100%;
       }
     }
   }

@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-const NavBarTwo = () => {
+
+import CartWidget from "../CartWidget/CartWidget";
+
+const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -74,11 +75,7 @@ const NavBarTwo = () => {
               showMenu ? "menu-nav__item open" : "menu-nav__item"
             }`}
           >
-            {" "}
-            <NavLink to="/cart" className="menu-nav__link">
-              {" "}
-              <FontAwesomeIcon icon={faShoppingCart} />{" "}
-            </NavLink>{" "}
+            <CartWidget></CartWidget>
           </li>
         </ul>
       </nav>
@@ -86,4 +83,4 @@ const NavBarTwo = () => {
   );
 };
 
-export default NavBarTwo;
+export default NavBar;

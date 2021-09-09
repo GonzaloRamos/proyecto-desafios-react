@@ -9,10 +9,20 @@
   margin: 1em;
   padding: 1em;
 
-  &__title h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    padding: 35px;
+  &__title {
+    color: $bg-color-primary;
+    @include transition-ease;
+
+    &:hover {
+      color: lighten($bg-color-primary, $amount: 35);
+      text-decoration: underline;
+    }
+
+    & h2 {
+      font-size: 1.75rem;
+      font-weight: 500;
+      padding: 0.5rem;
+    }
   }
 
   &__image {
