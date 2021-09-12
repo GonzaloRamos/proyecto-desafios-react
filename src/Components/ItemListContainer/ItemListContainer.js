@@ -2,6 +2,10 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
+//Firebase data
+import { collection, getDocs } from "firebase/firestore";
+import dataBaseFirestore from "../../FireBase/FireBase";
+
 //Componentes
 import ItemList from "../ItemList/ItemList";
 import LoaderClothes from "../Loader/LoaderClothes";
@@ -12,20 +16,27 @@ const ItemListContainer = () => {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => {
-        const dataFilter = categoryID
-          ? data.filter((e) => e.category === categoryID)
-          : data.filter(
-              (e) =>
-                e.category === "men's clothing" ||
-                e.category === "jewelery" ||
-                e.category === "women's clothing"
-            );
-        setProducts(dataFilter);
-        setLoad(false);
+    const obtenerDatos = async () => {
+      const datos = await getDocs(collection(dataBaseFirestore, "products"));
+      const document = datos.docs.map((documento) => {
+        return documento.data();
       });
+
+      const documentFilter = categoryID
+        ? document.filter((document) => document.category === categoryID)
+        : document.filter(
+            (document) =>
+              document.category === "men's clothing" ||
+              document.category === "jewelery" ||
+              document.category === "women's clothing"
+          );
+
+      setProducts(documentFilter);
+    };
+    setTimeout(() => {
+      obtenerDatos();
+      setLoad(false);
+    }, 2000);
   }, [categoryID]);
 
   return (
