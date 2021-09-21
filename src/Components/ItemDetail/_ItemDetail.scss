@@ -1,8 +1,7 @@
 .singleProduct {
   height: auto;
-  width: 100%;
   padding: 0;
-  margin: 1em;
+  margin: 5rem 1rem;
   background: #fff;
 
   @include FlexCenter(column, nowrap, 50px);
@@ -13,30 +12,42 @@
     height: 50%;
 
     img {
-      max-width: 100%;
-      object-fit: cover;
+      max-width: 85%;
     }
   }
 
   &__right {
-    flex: 0 1 360px;
-    height: 50%;
+    height: auto;
     padding: 1em;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    gap: 2em;
+    gap: 2rem;
     text-align: start;
 
-    // &__title {
-    // padding: 1em;
-    // }
-
+    &__title {
+      color: $bg-color-primary;
+      font-size: 1.75rem;
+      font-weight: 500;
+      padding: 0.6rem;
+      margin-bottom: 2rem;
+    }
     &__description {
-      text-transform: capitalize;
-      text-indent: 2%;
+      // position: relative;
+      margin-top: 0.5rem;
+      text-indent: 1.8%;
+      h5 {
+        font-size: 30px;
+        margin-bottom: 1em;
+        word-break: normal;
+        font-weight: 400;
+      }
       p {
-        line-height: 1.7em;
+        line-height: 1.4em;
+        font-weight: 400;
+        font-size: 16px;
+        font-family: $font-family;
+        word-break: break-word;
       }
     }
 
@@ -44,4 +55,8 @@
       padding: 1em;
     }
   }
+}
+
+.btn-BuyNow {
+  @include btn-primary(1.2em);
 }

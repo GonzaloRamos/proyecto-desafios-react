@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -14,7 +14,7 @@ import { CartProvider } from "./Components/CartContext/CartContext";
 class App extends React.Component {
   render() {
     return (
-      <div className="root">
+      <Fragment>
         <CartProvider>
           <Router>
             <Switch>
@@ -25,7 +25,7 @@ class App extends React.Component {
             </Switch>
           </Router>
         </CartProvider>
-      </div>
+      </Fragment>
     );
   }
 }

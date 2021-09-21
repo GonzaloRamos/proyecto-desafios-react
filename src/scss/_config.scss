@@ -12,6 +12,8 @@ $font-weights: (
   "bold": 700,
 );
 
+$lighten: 12;
+
 /* Buttons */
 
 $button-border-radius: 5px;
@@ -24,12 +26,14 @@ $buttonSecondary-clr: $bg-color-error;
   flex-flow: $direction $wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: $gap;
+  flex: 0 1 $gap;
 }
 
 @mixin transition-ease {
   transition: all 0.3s ease-in-out;
 }
+
+/* Responsive*/
 
 @mixin media-md {
   @media screen and (min-width: 768px) {

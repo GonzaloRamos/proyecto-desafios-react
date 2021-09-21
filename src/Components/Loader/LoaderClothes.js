@@ -14,7 +14,7 @@ const LoaderClothes = () => {
   }, []);
 
   return (
-    <div className="itemListContainer">
+    <div className="loaderContainer">
       <div ref={container}></div>
     </div>
   );

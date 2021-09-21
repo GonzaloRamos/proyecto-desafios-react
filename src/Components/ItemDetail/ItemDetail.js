@@ -5,23 +5,29 @@ import { useCartContext } from "../CartContext/CartContext";
 
 const ItemDetail = ({ item }) => {
   const { addToCart, cart, isInCart } = useCartContext();
-
   const [stock, setStock] = useState(() => {
     let itemStock = () => {
       if (isInCart(item.id)) {
-        const newStock = cart.filter(
+        const itemInCart = cart.filter(
           (cartElement) => cartElement.id === item.id
         );
 
-        return newStock[0].stock;
+        const quantityItemInCart = itemInCart[0].quantity;
+        const itemStock = item.stock;
+        console.log(
+          "ITEMSTOCK",
+          itemStock,
+          "QUANTITY ITEM IN CART",
+          quantityItemInCart
+        );
+        return itemStock - quantityItemInCart;
       } else {
-        return Math.floor(Math.random() * 10);
+        return item.stock;
       }
     };
     return itemStock();
   });
 
-  item.stock = stock;
   const [value, setValue] = useState(0);
 
   //Actualiza el CartContext
@@ -30,9 +36,10 @@ const ItemDetail = ({ item }) => {
       addToCart(item, count);
       setValue(1);
     } else {
-      alert("you have to add something");
+      alert("You have to add something");
     }
   };
+
   return (
     <section className="singleProduct">
       {" "}
@@ -46,15 +53,21 @@ const ItemDetail = ({ item }) => {
         </div>
         <div className="singleProduct__right__description">
           {" "}
-          <p>{item.description}</p> <p>&#36; {item.price}</p>
+          <h5> Description</h5>
+          <p>{item.description}</p>
         </div>
         <div className="singleProduct__right__itemCount">
           {value > 0 ? (
             <Link to="/cart">
-              <button>Buy now</button>
+              <button className="btn-BuyNow">Buy now</button>
             </Link>
           ) : (
-            <ItemCount stockItem={stock} onAdd={onAdd} setStock={setStock} />
+            <ItemCount
+              stockItem={stock}
+              onAdd={onAdd}
+              setStock={setStock}
+              price={item.price}
+            />
           )}
         </div>
       </div>

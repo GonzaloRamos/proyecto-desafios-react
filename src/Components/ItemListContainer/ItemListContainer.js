@@ -2,8 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-//Firebase data
-import { collection, getDocs } from "firebase/firestore";
+//Firebase data || FireStore
 import dataBaseFirestore from "../../FireBase/FireBase";
 
 //Componentes
@@ -17,28 +16,32 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     const obtenerDatos = async () => {
-      const datos = await getDocs(collection(dataBaseFirestore, "products"));
-      const document = datos.docs.map((documento) => {
-        return documento.data();
-      });
+      await dataBaseFirestore
+        .collection("products")
+        .onSnapshot((querySnapshot) => {
+          const datos = [];
+          querySnapshot.forEach((product) => {
+            datos.push({ ...product.data(), id: product.id });
+          });
 
-      const documentFilter = categoryID
-        ? document.filter((document) => document.category === categoryID)
-        : document.filter(
-            (document) =>
-              document.category === "men's clothing" ||
-              document.category === "jewelery" ||
-              document.category === "women's clothing"
-          );
+          const documentFilter = categoryID
+            ? datos.filter((datos) => datos.category === categoryID)
+            : datos.filter(
+                (datos) =>
+                  datos.category === "men's clothing" ||
+                  datos.category === "jewelery" ||
+                  datos.category === "women's clothing"
+              );
 
-      setProducts(documentFilter);
+          setProducts(documentFilter);
+          setProducts(documentFilter);
+        });
     };
     setTimeout(() => {
       obtenerDatos();
       setLoad(false);
     }, 2000);
   }, [categoryID]);
-
   return (
     <section className="itemListContainer">
       {" "}

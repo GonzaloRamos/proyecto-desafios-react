@@ -1,7 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import firebase from "firebase/app";
+import "firebase/firestore";
 // TODO: Replace the following with your app's Firebase project configuration
 // https://firebase.google.com/docs/web/setup#available-libraries
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
@@ -11,7 +12,7 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APPID,
 };
 
-const appFirebase = initializeApp(firebaseConfig);
-const dataBaseFirestore = getFirestore(appFirebase);
+const appFirebase = firebase.initializeApp(firebaseConfig);
+const dataBaseFirestore = appFirebase.firestore();
 
 export default dataBaseFirestore;

@@ -14,7 +14,7 @@ const CartWidget = () => {
       <NavLink to="/cart" className="menu-nav__link">
         {" "}
         <FontAwesomeIcon icon={faShoppingCart} />
-        <span>{totalItems}</span>
+        <span className="cartCount">{totalItems}</span>
       </NavLink>{" "}
     </Fragment>
   );

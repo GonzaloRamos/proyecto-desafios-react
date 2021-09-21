@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
     return cart.some((e) => e.id === id);
   };
 
-  const addToCart = (item, quantity, stock) => {
+  const addToCart = (item, quantity) => {
     if (isInCart(item.id)) {
       const newCart = cart.map((cartElement) => {
         if (cartElement.id === item.id) {
@@ -21,11 +21,14 @@ export const CartProvider = ({ children }) => {
             quantity: cartElement.quantity + quantity,
             stock: cartElement.stock - quantity,
           };
-        } else return cartElement;
+        } else return { cartElement, stock: cartElement.stock - quantity };
       });
       setCart(newCart);
     } else {
-      setCart((prev) => [...prev, { ...item, quantity }]);
+      setCart((prev) => [
+        ...prev,
+        { ...item, quantity, stock: item.stock - quantity },
+      ]);
     }
   };
 

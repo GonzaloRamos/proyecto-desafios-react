@@ -1,3 +1,4 @@
+@import "../../scss/buttons";
 .card {
   background: #fff;
   display: flex;
@@ -9,20 +10,11 @@
   margin: 1em;
   padding: 1em;
 
-  &__title {
+  &__title > h2 {
     color: $bg-color-primary;
-    @include transition-ease;
-
-    &:hover {
-      color: lighten($bg-color-primary, $amount: 35);
-      text-decoration: underline;
-    }
-
-    & h2 {
-      font-size: 1.75rem;
-      font-weight: 500;
-      padding: 0.5rem;
-    }
+    font-size: 1.75rem;
+    font-weight: 500;
+    padding: 0.6rem;
   }
 
   &__image {
@@ -35,5 +27,26 @@
       max-width: 100%;
       padding: 10px;
     }
+  }
+
+  &__rating {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    & > svg {
+      font-size: 2em;
+      color: orange;
+      margin-right: 0.2em;
+    }
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+  }
+
+  .btn-item__primary {
+    @include btn-primary(1.2em);
   }
 }

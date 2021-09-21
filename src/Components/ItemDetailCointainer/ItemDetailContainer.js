@@ -3,24 +3,32 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import LoaderClothes from "../Loader/LoaderClothes";
 
 //Firebase
-import { collection, query, where, getDocs } from "@firebase/firestore";
 import dataBaseFirestore from "../../FireBase/FireBase";
 
 const ItemDetailContainer = ({ itemID }) => {
   const [item, setItem] = useState({});
   const [load, setLoad] = useState(true);
-  useEffect(() => {
-    const getItem = async () => {
-      const q = query(
-        collection(dataBaseFirestore, "products"),
-        where("id", "==", parseInt(itemID))
-      );
 
-      const item = (await getDocs(q)).docs;
-      setItem(item[0].data());
+  useEffect(() => {
+    const getProduct = async () => {
+      const docRef = dataBaseFirestore.collection("products").doc(itemID);
+
+      await docRef
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            setItem({ ...doc.data(), id: doc.id });
+          } else {
+            alert("No such document!");
+          }
+        })
+        .catch((error) => {
+          alert("Error getting document:", error);
+        });
+
       setLoad(false);
     };
-    getItem();
+    getProduct();
   }, [itemID]);
 
   return load ? <LoaderClothes /> : <ItemDetail item={item} />;
