@@ -1,0 +1,52 @@
+/*Variables*/
+
+/* Global Variables*/
+
+$bg-color-primary: #155799;
+$bg-color-secondary: #159957;
+$bg-color-error: #bb2828;
+$font-family: "Open Sans", sans-serif;
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+);
+
+$lighten: 12;
+
+/* Buttons */
+
+$button-border-radius: 5px;
+$buttonPrimary-clr: $bg-color-primary;
+$buttonSecondary-clr: $bg-color-error;
+
+/* Mixins*/
+@mixin FlexCenter($direction, $wrap, $gap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 0 1 $gap;
+}
+
+@mixin transition-ease {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive*/
+
+@mixin media-md {
+  @media screen and (min-width: 726px) {
+    @content;
+  }
+}
+@mixin media-lg {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin media-xl {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}

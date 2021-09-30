@@ -1,0 +1,115 @@
+.menu-btn {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  top: 1rem;
+  height: 20px;
+  width: 28px;
+  cursor: pointer;
+
+  @include transition-ease;
+
+  &__burger {
+    font-size: 1.7rem;
+    color: white;
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.98;
+  visibility: hidden;
+
+  &.open {
+    visibility: visible;
+  }
+
+  .menu-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    background-image: linear-gradient(
+      47deg,
+      $bg-color-primary,
+      $bg-color-secondary
+    );
+    list-style: none;
+    padding-right: 1rem;
+    transform: translateY(-100%);
+    @include transition-ease;
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    &__item {
+      transform: translateX(100vw);
+      @include transition-ease;
+      &.open {
+        transform: translateX(0);
+        color: white;
+      }
+    }
+    &__link {
+      position: relative;
+      display: inline-block;
+      font-size: 2rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 2rem 0;
+      font-weight: 300;
+      @include transition-ease;
+
+      &:hover {
+        color: orange;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 2rem;
+        background: $bg-color-secondary;
+        width: 0;
+        height: 2px;
+        @include transition-ease;
+      }
+      &:hover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        background: $bg-color-secondary;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.cartCount {
+  position: absolute;
+  text-align: center;
+  background-color: #0f3e6c;
+  font-size: 16px;
+  top: 14px;
+  right: -18px;
+  border-radius: 50%;
+  padding: 0.3em;
+  padding-top: 0.35em;
+}
+
+@for $i from 1 through 5 {
+  .menu-nav__item:nth-child(#{$i}) {
+    transition-delay: ($i * 0.1s) + 0.15s;
+  }
+}
+
+.active {
+  color: orange;
+}

@@ -1,0 +1,21 @@
+@import "../../scss/buttons";
+
+.itemCount__description {
+  padding: 0 0 1rem 0;
+
+  & > h5 {
+    padding-bottom: 0.5rem;
+  }
+}
+
+.btn-itemCount__increment {
+  @include btn-primary(1.2em);
+}
+
+.btn-itemCount__decrement {
+  @include btn-secondary(1.2em);
+}
+
+.btn-itemCount__cart {
+  @include btn-primary(1.2em);
+}

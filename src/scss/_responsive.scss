@@ -1,0 +1,408 @@
+@include media-md {
+  //NavBar
+
+  .menu-btn {
+    visibility: hidden;
+    position: none;
+  }
+
+  .nav {
+    visibility: visible;
+    position: relative;
+
+    .menu-nav {
+      display: block;
+      transform: translateY(0);
+      height: auto;
+      background: white;
+      text-align: right;
+
+      &__item {
+        display: inline;
+        position: relative;
+        margin-right: 1.5rem;
+      }
+      &__link {
+        font-size: 1.5rem;
+        color: $bg-color-primary;
+        text-decoration: none;
+
+        &:hover {
+          color: orange;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 27px;
+          background: $bg-color-secondary;
+          width: 0;
+          height: 1px;
+          @include transition-ease;
+        }
+        &:hover::before {
+          content: "";
+          background: lighten($bg-color-secondary, 10);
+          width: 100%;
+          height: 1px;
+        }
+        //Cart numbers
+        & > span {
+          color: white;
+        }
+      }
+    }
+  }
+  .cartCount {
+    top: 14px;
+    right: -18px;
+  }
+
+  // Main page cards
+
+  .card__title {
+    position: relative;
+    color: $bg-color-primary;
+    @include transition-ease;
+    transition-delay: 0.1s;
+
+    &:hover {
+      color: lighten($bg-color-primary, 55);
+      cursor: default;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background: $bg-color-secondary;
+      width: 0;
+      height: 2px;
+      @include transition-ease;
+    }
+    &:hover::before {
+      content: "";
+      background: lighten($bg-color-secondary, 10);
+      width: 100%;
+      height: 2.5px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: $bg-color-secondary;
+      width: 0;
+      height: 2.5px;
+      @include transition-ease;
+    }
+    &:hover:after {
+      content: "";
+      background: lighten($bg-color-secondary, 10);
+      width: 100%;
+      height: 2.5px;
+    }
+  }
+
+  .card__rating > div > svg {
+    @include transition-ease;
+
+    &:hover {
+      font-size: 29px;
+    }
+  }
+
+  // Item Detail
+  .singleProduct {
+    margin-right: 2rem;
+    &__right {
+      &__title {
+        font-size: 32px;
+      }
+      &__description {
+        margin-top: 0.5rem;
+        text-indent: 1.8%;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.39);
+
+        h5 {
+          font-size: 30px;
+        }
+        p {
+          line-height: 1.9rem;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .itemCount__description {
+    font-size: 18px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    & > h5 {
+      padding: 0.8rem;
+    }
+  }
+
+  .btn-itemCount-container {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 18px;
+  }
+
+  .btn-BuyNow {
+    font-size: 20px;
+  }
+}
+
+@include media-lg {
+  //Item Detail cards
+  .singleProduct {
+    display: flex;
+    font-family: $font-family;
+    height: auto;
+    padding: 0;
+    margin-top: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: #fff;
+
+    &__left {
+      padding: 2rem;
+      width: 1000px;
+      img {
+        max-width: 100%;
+      }
+    }
+
+    &__right {
+      height: auto;
+      padding: 1em;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      gap: 2rem;
+      text-align: start;
+
+      &__title {
+        color: $bg-color-primary;
+        font-size: 1.75rem;
+        font-weight: 500;
+        padding: 0.6rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.39);
+      }
+      &__description {
+        margin-top: 0.5rem;
+        text-indent: 1.8%;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.39);
+
+        h5 {
+          font-size: 30px;
+          margin-bottom: 1em;
+          word-break: normal;
+          font-weight: 400;
+        }
+        p {
+          line-height: 1.4em;
+          font-weight: 400;
+          font-size: 16px;
+          font-family: $font-family;
+          word-break: break-word;
+          padding-bottom: 2rem;
+        }
+      }
+
+      &__itemCount {
+        padding: 1em;
+      }
+    }
+  }
+
+  // Cart View cards
+
+  .cartContainer__Items {
+    display: block;
+    height: auto;
+    width: 100%;
+    margin: 150px auto;
+
+    .item {
+      padding: 1rem;
+      margin: 0 auto 5px auto;
+      background: rgb(255, 255, 255);
+      width: 80%;
+
+      &__container {
+        overflow: hidden;
+        padding: 15px;
+        border-bottom: 1px solid lighten($bg-color-secondary, $lighten + 32);
+      }
+
+      &__image {
+        overflow: hidden;
+        margin: 0 16px 0 0;
+        float: left;
+
+        & > img {
+          vertical-align: middle;
+          width: 200px;
+          aspect-ratio: auto 60/ 60;
+          height: auto;
+        }
+      }
+      &__information {
+        overflow: hidden;
+        zoom: 1.1;
+
+        &__title {
+          color: rgb(0, 0, 0);
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 1.25;
+          overflow: hidden;
+          margin-bottom: 2px;
+        }
+        &-main {
+          line-height: 1.25;
+          font-size: 14px;
+          color: #999999;
+          margin: 16px 0px 16px 0px;
+          overflow: hidden;
+          word-break: normal;
+        }
+      }
+
+      &__footer {
+        clear: both;
+        overflow: hidden;
+        margin-top: 16px;
+        width: 100%;
+
+        &__price {
+          max-width: 100%;
+          float: right;
+          font-size: 18px;
+          font-weight: 300;
+          text-align: right;
+          margin: 0;
+        }
+      }
+
+      &__actions {
+        padding: 16px;
+
+        &-container {
+          width: calc(100% +15px);
+          line-height: 1.25;
+          overflow: hidden;
+
+          & > li {
+            float: left;
+            list-style: none;
+            display: list-item;
+          }
+        }
+      }
+    }
+  }
+
+  .cart__footer {
+    display: block;
+    background-color: #fff;
+    height: 200px;
+    width: 80%;
+    margin: 0 auto;
+
+    &-summary {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid lighten($bg-color-secondary, $lighten + 32);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    &-btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@include media-xl {
+  //Item Detail cards
+
+  .singleProduct {
+    display: flex;
+    font-family: $font-family;
+    height: auto;
+    padding: 0;
+    margin-top: 5rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    background: #fff;
+
+    &__left {
+      padding: 2rem;
+      width: 1000px;
+      img {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+    &__right {
+      height: auto;
+      padding: 1em;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      gap: 2rem;
+      text-align: start;
+
+      &__title {
+        color: $bg-color-primary;
+        font-size: 1.75rem;
+        font-weight: 500;
+        padding: 0.6rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.39);
+      }
+      &__description {
+        margin-top: 0.5rem;
+        text-indent: 1.8%;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.39);
+
+        h5 {
+          font-size: 30px;
+          margin-bottom: 1em;
+          word-break: normal;
+          font-weight: 400;
+        }
+        p {
+          line-height: 1.4em;
+          font-weight: 400;
+          font-size: 16px;
+          font-family: $font-family;
+          word-break: break-word;
+          padding-bottom: 2rem;
+        }
+      }
+
+      &__itemCount {
+        padding: 1em;
+      }
+    }
+
+    .btn-itemCount-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 18px;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@mixin btn-primary($fontSize) {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid $bg-color-secondary;
+  background-color: lighten($bg-color-primary, $lighten);
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  font-size: $fontSize;
+  @include transition-ease;
+}
+
+@mixin btn-secondary($fontSize) {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid $bg-color-primary;
+  background-color: lighten($bg-color-secondary, $lighten);
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  font-size: $fontSize;
+  @include transition-ease;
+}
+
+@include media-md {
+  .btn-primary:hover {
+    background-color: $bg-color-secondary;
+    border: 0.1em solid $bg-color-primary;
+  }
+
+  .btn-secondary:hover {
+    background-color: $bg-color-primary;
+    border: 0.1em solid $bg-color-secondary;
+  }
+}
