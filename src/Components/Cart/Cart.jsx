@@ -2,38 +2,12 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../CartContext/CartContext";
 import CartList from "../CartList/CartList";
-import Form from "../Form/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-//FireStore
-import firebase from "firebase/app";
-import dataBaseFirestore from "../../FireBase/FireBase";
 import { faFrownOpen } from "@fortawesome/free-regular-svg-icons";
 
 const Cart = () => {
   const { cart, totalPrice, removeItem, clear } = useCartContext();
-
-  const purchase = async (buyerName, buyerPhone, buyerEmail) => {
-    const orders = dataBaseFirestore.collection("orders");
-    const newOrder = {
-      buyer: {
-        name: buyerName,
-        phone: buyerPhone,
-        email: buyerEmail,
-      },
-      items: cart,
-      date: firebase.firestore.Timestamp.fromDate(new Date()),
-      total: totalPrice(),
-    };
-    await orders
-      .add(newOrder)
-      .then(() => {
-        console.log("Document successfully written!");
-      })
-      .catch((error) => {
-        console.error("Error writing document: ", error);
-      });
-  };
 
   return (
     <Fragment>
@@ -68,7 +42,11 @@ const Cart = () => {
                 Clear Cart
               </span>
             </div>
-            <Form purchase={purchase}></Form>
+            <div className="cart__footer-btn-container">
+              <Link className="btn-cart__purchase" to="/purchase">
+                Purchase
+              </Link>
+            </div>
           </footer>
         </div>
       )}

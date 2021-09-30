@@ -31,9 +31,8 @@ const NavBar = () => {
               showMenu ? "menu-nav__item open" : "menu-nav__item"
             }`}
           >
-            <NavLink to="/" className="menu-nav__link" activeClassName="active">
-              {" "}
-              Home{" "}
+            <NavLink to="/" className="menu-nav__link">
+              Home
             </NavLink>
           </li>
           <li
@@ -44,7 +43,9 @@ const NavBar = () => {
             <NavLink
               to="/category/men's clothing"
               className="menu-nav__link"
-              activeClassName="active"
+              activeStyle={{
+                color: "orange",
+              }}
             >
               {" "}
               Men's Clothes{" "}
@@ -55,7 +56,13 @@ const NavBar = () => {
               showMenu ? "menu-nav__item open" : "menu-nav__item"
             }`}
           >
-            <NavLink to="/category/women's clothing" className="menu-nav__link">
+            <NavLink
+              to="/category/women's clothing"
+              className="menu-nav__link"
+              activeStyle={{
+                color: "orange",
+              }}
+            >
               {" "}
               Women's Clothes{" "}
             </NavLink>
@@ -65,7 +72,13 @@ const NavBar = () => {
               showMenu ? "menu-nav__item open" : "menu-nav__item"
             }`}
           >
-            <NavLink to="/category/jewelery" className="menu-nav__link">
+            <NavLink
+              to="/category/jewelery"
+              className="menu-nav__link"
+              activeStyle={{
+                color: "orange",
+              }}
+            >
               {" "}
               Jewerly{" "}
             </NavLink>{" "}

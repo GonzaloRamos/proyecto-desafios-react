@@ -13,7 +13,11 @@ const CartList = ({ cartElement, removeItem, itemImage }) => {
             <h2 className="item__information__title">{cartElement.title}</h2>
 
             <div className="item__information-main">
-              <p>{cartElement.description.substring(0, 29) + "..."}</p>
+              <p>
+                {window.matchMedia("(min-width:726px)").matches
+                  ? cartElement.description
+                  : cartElement.description.substring(0, 29) + "..."}
+              </p>
             </div>
             <div>Units: {cartElement.quantity}</div>
           </div>

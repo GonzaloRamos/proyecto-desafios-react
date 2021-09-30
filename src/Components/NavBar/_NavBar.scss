@@ -96,17 +96,20 @@
   position: absolute;
   text-align: center;
   background-color: #0f3e6c;
-  font-size: 1.5rem;
-  width: 1em;
-  height: 1em;
-  top: 15px;
-  right: -23px;
+  font-size: 16px;
+  top: 14px;
+  right: -18px;
   border-radius: 50%;
-  padding: 0.05em;
+  padding: 0.3em;
+  padding-top: 0.35em;
 }
 
 @for $i from 1 through 5 {
   .menu-nav__item:nth-child(#{$i}) {
     transition-delay: ($i * 0.1s) + 0.15s;
   }
+}
+
+.active {
+  color: orange;
 }

@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ItemCount = ({ stockItem, setStock, initial = 0, onAdd, price }) => {
   const [count, setCount] = useState(initial);
@@ -29,30 +29,33 @@ const ItemCount = ({ stockItem, setStock, initial = 0, onAdd, price }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <div className="itemCount__description">
         <h5>Item's you will buy : {count} </h5>
         <h5>Available stock: {stockItem}</h5>
+        <h5>Price per unit: ${price}</h5>
         <h5>
           Total Price: <span>&#36;{(price * count).toFixed(2)}</span>{" "}
         </h5>
       </div>
-      <button onClick={increment} className="btn-itemCount__increment">
-        +
-      </button>
-      <button onClick={decrement} className="btn-itemCount__decrement">
-        -
-      </button>
+      <div className="btn-itemCount-container">
+        <button onClick={increment} className="btn-itemCount__increment">
+          +
+        </button>
+        <button onClick={decrement} className="btn-itemCount__decrement">
+          -
+        </button>
 
-      <button className="btn-itemCount__cart">
-        <FontAwesomeIcon
-          icon={faShoppingCart}
-          onClick={() => {
-            onAdd(count);
-          }}
-        />{" "}
-      </button>
-    </Fragment>
+        <button className="btn-itemCount__cart">
+          <FontAwesomeIcon
+            icon={faCartPlus}
+            onClick={() => {
+              onAdd(count);
+            }}
+          />{" "}
+        </button>
+      </div>
+    </>
   );
 };
 

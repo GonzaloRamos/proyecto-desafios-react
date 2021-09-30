@@ -1,0 +1,115 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: lighten($bg-color-primary, 60);
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  width: 320px;
+}
+.purchaseContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 35px;
+  background-color: lighten($bg-color-primary, 60);
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 10px;
+  width: 320px;
+  & > svg {
+    color: $bg-color-primary;
+    font-size: 9rem;
+  }
+  & > h3 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  & > p {
+    text-align: center;
+    line-height: 1.7;
+    font-size: 18px;
+    font-weight: 300;
+  }
+  & > a {
+    padding-bottom: 1rem;
+  }
+}
+
+.title {
+  color: $bg-color-primary;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: $bg-color-secondary;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.input {
+  background-color: $bg-color-primary;
+  border-radius: 12px;
+  box-sizing: border-box;
+  border: 0;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.336);
+  }
+}
+
+.submit {
+  @include btn-primary(18px);
+  height: 50px;
+  margin-top: 38px;
+  width: 100%;
+
+  &:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+}
+
+.labelInput {
+  display: block;
+  padding: 5px;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $bg-color-primary inset;
+  -webkit-text-fill-color: #fff;
+}

@@ -6,22 +6,24 @@
 
 /*Componentes*/
 @import "../Components/Header/Header";
-
 @import "../Components/Item/Item";
-
 @import "../Components/ItemListContainer/ItemListContainer";
-
 @import "../Components/NavBar/NavBar";
-
 @import "../Components/ItemDetail/ItemDetail";
-
 @import "../Components/Cart/Cart";
+@import "../Components/ItemCount/ItemCount";
+@import "../Components/Form/Form";
 
+//Configurations
 @import "responsive";
 
-@import "../Components/ItemCount/ItemCount";
-
 @import "buttons";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 :root {
   width: 100%;

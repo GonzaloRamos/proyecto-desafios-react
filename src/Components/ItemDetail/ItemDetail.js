@@ -14,12 +14,7 @@ const ItemDetail = ({ item }) => {
 
         const quantityItemInCart = itemInCart[0].quantity;
         const itemStock = item.stock;
-        console.log(
-          "ITEMSTOCK",
-          itemStock,
-          "QUANTITY ITEM IN CART",
-          quantityItemInCart
-        );
+
         return itemStock - quantityItemInCart;
       } else {
         return item.stock;

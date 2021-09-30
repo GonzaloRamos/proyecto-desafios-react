@@ -14,7 +14,7 @@ const Item = ({ data }) => {
           <h2>{data.title}</h2>
         </div>
         <div className="card__rating">
-          <Rating rateItem={data.rating}></Rating>
+          <Rating rateItem={data.rating} />
         </div>
         <div className="buttonContainer">
           <Link to={`/detail/${data.id}`}>

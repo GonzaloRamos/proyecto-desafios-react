@@ -2,9 +2,9 @@ import React, { useContext, createContext } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { useLocalStorage } from "../CustomHooks/useLocalStorage/useLocalStorage";
 
+//Context
 export const CartContext = createContext();
 export const useCartContext = () => useContext(CartContext);
-
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useLocalStorage("cart", []);
 
